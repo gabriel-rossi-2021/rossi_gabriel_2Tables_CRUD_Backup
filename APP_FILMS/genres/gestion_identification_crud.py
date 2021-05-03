@@ -129,7 +129,7 @@ def identification_ajouter_wtf():
                 courriel_identificaiton_wtf = form.courriel_wtf.data
 
                 nom_utilisateur_identification = nom_utilisateur_identification_wtf.capitalize()
-                courriel_identificaiton = courriel_identificaiton_wtf.capitalize()
+                courriel_identificaiton = courriel_identificaiton_wtf.lower()
 
                 valeurs_insertion_dictionnaire = {"value_nom_utilisateur": nom_utilisateur_identification,
                                                   "value_courriel": courriel_identificaiton}
@@ -208,7 +208,7 @@ def identification_update_wtf():
             nom_utilisateur_identification_update = nom_utilisateur_identification_update.capitalize()
 
             courriel_identification_update = form_update. courriel_identification_update_wtf.data
-            courriel_identification_update = courriel_identification_update.capitalize()
+            courriel_identification_update = courriel_identification_update.lower()
 
             valeur_update_dictionnaire = {"value_id_identification": id_identification_update, "value_nom_utilisateur_identification": nom_utilisateur_identification_update, "value_courriel_identification": courriel_identification_update}
             print("valeur_update_dictionnaire ", valeur_update_dictionnaire)

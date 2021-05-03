@@ -23,14 +23,14 @@ class FormWTFAjouterCollaborateur(FlaskForm):
                                                                                   "d'espace à double, de double "
                                                                                   "apostrophe, de double trait union")
                                                                    ])
-    courriel_regexp = "^\ b [ A - Z 0 - 9 ._% + - ]+ @ [ A - Z 0 - 9 . - ] + \. [ A - Z ] {2,4} \ b"
+    courriel_regexp = "^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$"
     courriel_wtf = StringField("Taper l'adresse email ",
-                             validators=[Length(min=2, max=20, message="min 2 max 20"),
+                             validators=[Length(min=2, max=255, message="min 2 max 255"),
                                          Regexp(courriel_regexp,
-                                                message="Pas de chiffres, de caractères "
-                                                        "spéciaux, "
-                                                        "d'espace à double, de double "
-                                                        "apostrophe, de double trait union")
+                                                message="obliger : "
+                                                        "d'avoir un @,"
+                                                        " d'avoir un ."
+                                                )
                                          ])
     submit = SubmitField("Enregistrer identification")
 
@@ -50,15 +50,15 @@ class FormWTFUpdateIdentification(FlaskForm):
                                                                                          "apostrophe, de double trait "
                                                                                          "union")
                                                                           ])
-    courriel_identification_update_regexp = "^([A-Z]|[a-zÀ-ÖØ-öø-ÿ])[A-Za-zÀ-ÖØ-öø-ÿ]*['\- ]?[A-Za-zÀ-ÖØ-öø-ÿ]+$"
-    courriel_identification_update_wtf = StringField("Courriel ", validators=[Length(min=2, max=20, message="min 2 max 20"),
+    courriel_identification_update_regexp = "^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$"
+    courriel_identification_update_wtf = StringField("Courriel ", validators=[Length(min=2, max=255, message="min 2 max 255"),
                                                                           Regexp(courriel_identification_update_regexp,
-                                                                                 message="Pas de chiffres, de "
-                                                                                         "caractères "
-                                                                                         "spéciaux, "
-                                                                                         "d'espace à double, de double "
-                                                                                         "apostrophe, de double trait "
-                                                                                         "union")
+                                                                                 message="obliger : "
+                                                                                         "d'avoir un @"
+                                                                                         "d'avoir un ."
+
+
+                                                                                         )
                                                                           ])
     submit = SubmitField("Update genre")
 
